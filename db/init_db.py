@@ -70,11 +70,39 @@ def ensure_urls_table(conn: sqlite3.Connection):
         if not _column_exists(cur, "urls", col):
             cur.execute(f"ALTER TABLE urls ADD COLUMN {col} {coltype};")
 
+def ensure_virustotal_table(conn: sqlite3.Connection):
+    """virustotal 테이블 생성 (없으면)"""
+    cur = conn.cursor()
+    if not _table_exists(cur, "virustotal"):
+        cur.execute("""
+        CREATE TABLE virustotal (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            url_id INTEGER,
+            ioc TEXT NOT NULL,
+            type TEXT NOT NULL,
+            detection_count INTEGER,
+            detection_breakdown TEXT,
+            historical_whois TEXT,
+            referrer_files TEXT,
+            referrer_file_insights TEXT,
+            whois_analysis TEXT,
+            whois_date_range_oldest TEXT,
+            whois_date_range_newest TEXT,
+            created_at TEXT,
+            FOREIGN KEY (url_id) REFERENCES urls(id)
+        );
+        """)
+        # 인덱스 추가
+        cur.execute("CREATE INDEX IF NOT EXISTS idx_vt_url_id ON virustotal(url_id);")
+        cur.execute("CREATE INDEX IF NOT EXISTS idx_vt_ioc ON virustotal(ioc);")
+        cur.execute("CREATE INDEX IF NOT EXISTS idx_vt_type ON virustotal(type);")
+
 def init_db(db_path: str):
     Path(db_path).parent.mkdir(parents=True, exist_ok=True)
     conn = sqlite3.connect(db_path)
     try:
         ensure_urls_table(conn)
+        ensure_virustotal_table(conn)
         conn.commit()
     finally:
         conn.close()
