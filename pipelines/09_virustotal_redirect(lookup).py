@@ -8,9 +8,6 @@ from datetime import datetime
 
 # ==========================================
 # [설정]
-API_KEY = "d0deb3e8567a21688ccb1706782858fc0aebf3ece5c6a84f731e94c9541d5e1e" #dosix
-#API_KEY = "97859e5b22dafb300803235c6b6dad0eef6d416a2d7112f11a8c200ccb9beb91" #kimdoyeon
-#API_KEY = "27e6cdfa30eddb16f55a858a2e1ec783c9067ada412b5bb1bdf099f69f7f9ac2" #효은
 DB_PATH = "db/translate_goog_urls.db"
 TABLE_NAME = "redirect_2plus_final_dedup" 
 DAILY_LIMIT = 330 #일일 할당량 (500 - 여유분 5)
