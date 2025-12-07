@@ -7,16 +7,11 @@ import psycopg2
 
 # ==========================================
 # [설정]
-#API_KEY = "d0deb3e8567a21688ccb1706782858fc0aebf3ece5c6a84f731e94c9541d5e1e" #dosix
-#API_KEY = "97859e5b22dafb300803235c6b6dad0eef6d416a2d7112f11a8c200ccb9beb91" #kimdoyeon
-API_KEY = "27e6cdfa30eddb16f55a858a2e1ec783c9067ada412b5bb1bdf099f69f7f9ac2" #효은
+
 DAILY_LIMIT = 495 #일일 할당량 (500 - 여유분 5)
 
 # PostgreSQL DSN (Neon에서 복사해온 문자열 사용)
 # 실제 값 예시:
-# "postgresql://neondb_owner:비번@ep-...us-east-1.aws.neon.tech/translate_goog_urls?sslmode=require&channel_binding=require"
-#DB_DSN = "postgresql://neondb_owner:YOURPASS@YOURHOST/translate_goog_urls?sslmode=require&channel_binding=require"
-DB_DSN ="postgresql://neondb_owner:npg_gZeSkoB7h5LV@ep-steep-wind-a4xmp84x-pooler.us-east-1.aws.neon.tech/translate_goog_urls?sslmode=require&channel_binding=require"
 TABLE_NAME = "adult_redirect_v1"
 PRIMARY_KEY_COL = "original_rowid"   # ← 너 테이블 PK 컬럼 이름으로 바꿔줘 (예: "id", "original_rowid" 등)
 # ==========================================
