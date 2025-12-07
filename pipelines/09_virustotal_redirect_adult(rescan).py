@@ -9,11 +9,8 @@ import logging
 # ==========================================
 # [설정] - 실제 사용되는 설정입니다.
 # ==========================================
-API_KEY = "d0deb3e8567a21688ccb1706782858fc0aebf3ece5c6a84f731e94c9541d5e1e" #dosix
-#API_KEY = "97859e5b22dafb300803235c6b6dad0eef6d416a2d7112f11a8c200ccb9beb91" #kimdoyeon
-#API_KEY = "27e6cdfa30eddb16f55a858a2e1ec783c9067ada412b5bb1bdf099f69f7f9ac2" #효은
+
 DAILY_LIMIT = 340 #일일 할당량
-DB_DSN ="postgresql://neondb_owner:npg_gZeSkoB7h5LV@ep-steep-wind-a4xmp84x-pooler.us-east-1.aws.neon.tech/translate_goog_urls?sslmode=require&channel_binding=require"
 TABLE_NAME = "redirect_2plus_final_split"
 PRIMARY_KEY_COL = "original_rowid"
 VT_FREE_SLEEP_SEC = 16 
